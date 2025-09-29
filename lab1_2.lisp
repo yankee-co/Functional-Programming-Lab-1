@@ -1,1 +1,5 @@
-(let ((d 'D)) (list (list 4 d 5) 'E 'F (list 6 d)))
+(let* ((d-cons (cons 'D nil)) 
+       (bottom (cons 4 (cons d-cons (cons 5 nil))))
+       (right  (cons 6 d-cons))) 
+  (list bottom 'E 'F right))
+((4 (D) 5) E F (6 D))
