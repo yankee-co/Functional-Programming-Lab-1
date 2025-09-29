@@ -72,24 +72,9 @@ CL-USER> (append my-list (caddr my-list))
 </p>
 
 ```lisp
-CL-USER> (let ((d 'D))                               ; Перша форма (верхній рівень)
-           (list (list 4 d 5) 'E 'F (list 6 d)))     ; Друга форма (верхній рівень)
-((4 D 5) E F (6 D))
-
-;; Покрокове отримання
-;; перший підсписок
-CL-USER> (list 4 'D 5)
-(4 D 5)
-
-;; четвертий підсписок
-CL-USER> (list 6 'D)
-(6 D)
-
-;; Збираємо все разом
-CL-USER> (list '(4 D 5) 'E 'F '(6 D))
-((4 D 5) E F (6 D))
-
-;; Зберігаємо
-CL-USER> (setq variant8 *)
-((4 D 5) E F (6 D))
+CL-USER 1 > (let* ((d-cons (cons 'D nil)) 
+       (bottom (cons 4 (cons d-cons (cons 5 nil))))
+       (right  (cons 6 d-cons))) 
+  (list bottom 'E 'F right))
+((4 (D) 5) E F (6 D))
 ```
